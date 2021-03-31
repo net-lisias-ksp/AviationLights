@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2017-0526: 3.14 (MOARdV) for KSP 1.3.0
+	+ For KSP 1.3.0 / 1.3.1
+	+ Fixes NRE in VAB/SPH when trying to set flash mode to Flash, Double Flash, or Interval.
 * 2017-0526: 3.13 (MOARdV) for KSP 1.3.0
 	+ Recompiled for KSP 1.3.0
 * 2016-1020: 3.12 (MOARdV) for KSP 1.2.
