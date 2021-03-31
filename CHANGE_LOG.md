@@ -1,5 +1,9 @@
 # Aviation Lights :: Change Log
 
+* 2018-1016: 4.0.5.1 (MOARdV) for KSP 1.5.0
+	+ For KSP 1.5.0 and beyond
+			- Recompiled against KSP 1.5.0.
+			- Fixed: Typo in version file.
 * 2018-0506: 4.0.5 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - KSP 1.5.0
 			- Fixed: Aviation Lights illuminate the surface of the planet (Issue #10).
