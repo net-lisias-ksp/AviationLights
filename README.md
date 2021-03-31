@@ -13,8 +13,8 @@ Unofficial fork by Lisias.
 * Documentation
 	+ [Project's README](https://github.com/net-lisias-kspu/AviationLights/blob/master/README.md)
 	+ [Install Instructions](https://github.com/net-lisias-kspu/AviationLights/blob/master/INSTALL.md)
-	+ [Change Log](./CHANGE_LOG.md)
-	+ [TODO](./TODO.md) list
+	+ [Change Log](https://github.com/net-lisias-kspu/AviationLights/blob/master/CHANGE_LOG.md)
+	+ [Known Issues](https://github.com/net-lisias-kspu/AviationLights/blob/master/KNOWN_ISSUES.md)
 
 
 ## Description
