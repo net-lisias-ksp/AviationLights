@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2018-0506: 4.0.5 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - KSP 1.5.0
+			- Fixed: Aviation Lights illuminate the surface of the planet (Issue #10).
 * 2018-0409: 4.0.4 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - 1.4.2
 			- Fixed: Flashing lights blink rapidly after exiting warp.  Issue #8.
