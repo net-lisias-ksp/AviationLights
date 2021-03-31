@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2019-0706: 4.0.8 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - 1.7.x
+			- Added zh-cn localization courtesy duck1998.
 * 2019-0226: 4.0.7 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - 1.6.x
 			- Added fr-fr localization courtesy don-vip.  Pull request #16.
