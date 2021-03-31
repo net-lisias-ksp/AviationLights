@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2016-1020: 3.12 (MOARdV) for KSP 1.2.
+	+ For KSP 1.2.x
+		- Re-enabled right-click menus in the VAB.
 * 2016-1012: 3.11 (MOARdV) for KSP 1.2.0
 	+ FIXED: Hang when hovering over aviation lights.
 	+ FIXED: Flash interval backwards when toggling Flash mode when the light was on.
