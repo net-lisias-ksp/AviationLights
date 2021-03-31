@@ -1,5 +1,9 @@
 # Aviation Lights :: Change Log
 
+* 2020-0705: 4.1.1 (MOARdV) for KSP 1.10.0
+	+ For KSP 1.10.0 - 5 July 2020 - v4.1.1
+			- Recompiled for KSP 1.10.0 (and finally updated the version file, alas).
+			- Fixed bug that enabled the spotlight toggle on non-tweakable lights (such as the old aviation lights), as noted by GitHub user Promyclon.
 * 2019-1016: 4.1.0 (MOARdV) for KSP 1.8.0
 	+ For KSP 1.8.x
 			- Recompiled for KSP 1.8.0
