@@ -1,0 +1,18 @@
+{
+	"NAME"		: "Aviation Lights /L Unofficial",
+	"URL"		: "https://raw.githubusercontent.com/net-lisias-kspu/AviationLights/master/AviationLights.version",
+	"DOWNLOAD"	: "https://github.com/net-lisias-kspu/AviationLights/releases",
+	"CHANGE_LOG"	: "https://raw.githubusercontent.com/net-lisias-kspu/AviationLights/master/CHANGE_LOG.md",
+	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/net-lisias-kspu/AviationLights/master/CHANGES.md",
+	"VERSION":{
+		"MAJOR":4,
+		"MINOR":1,
+		"PATCH":1,
+		"BUILD":0
+		},
+	"KSP_VERSION_MIN":{
+		"MAJOR":1,
+		"MINOR":3,
+		"PATCH":0
+		}
+}
