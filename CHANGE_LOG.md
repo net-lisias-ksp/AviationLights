@@ -1,5 +1,7 @@
 # Aviation Lights :: Change Log
 
+* 2016-1011: 3.10 (MOARdV) for KSP 1.2.0
+	+ Aviation Lights recompiled for KSP 1.2.0
 * 2016-0508: 3.9 (MOARdV) for KSP 1.1.
 	+ KSP 1.1.0 - KSP 1.1.3
 		- Updated to KSP 1.1.x
