@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2018-0403: 4.0.1 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - KSP 1.4.2
+			- Added tags to the lights, including cck_lights for compatibility with the Community Category Kit.
 * 2018-0331: 4.0.0 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - KSP 1.4.2
 	+ There are many changes in this version of Aviation Lights.  I recommend you spend a few minutes going through the [readme](https://github.com/MOARdV/AviationLights/blob/master/README.md) file.
