@@ -1,5 +1,9 @@
 # Aviation Lights :: Change Log
 
+* 2019-0226: 4.0.7 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - 1.6.x
+			- Added fr-fr localization courtesy don-vip.  Pull request #16.
+			- Finally synchronized the DLL binary and the version file (forgot to update .version for 4.0.6).
 * 2018-1221: 4.0.6 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - 1.6.x
 			- Added es-es localization courtesy fitiales.  Pull request #15.
