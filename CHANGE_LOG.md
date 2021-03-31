@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2018-0409: 4.0.4 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - 1.4.2
+			- Fixed: Flashing lights blink rapidly after exiting warp.  Issue #8.
 * 2018-0407: 4.0.3 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - 1.4.2
 			- Correctly implement symmetry behavior for the new point/spot toggle (Issue #7).
