@@ -1,5 +1,8 @@
 # Aviation Lights :: Change Log
 
+* 2018-0407: 4.0.3 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - 1.4.2
+			- Correctly implement symmetry behavior for the new point/spot toggle (Issue #7).
 * 2018-0407: 4.0.2 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - 1.4.2
 			- Fix: Emissive layer not updating correctly in flight (Issue #6).
