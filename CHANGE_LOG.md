@@ -1,5 +1,9 @@
 # Aviation Lights :: Change Log
 
+* 2019-1016: 4.1.0 (MOARdV) for KSP 1.8.0
+	+ For KSP 1.8.x
+			- Recompiled for KSP 1.8.0
+			- Redesigned the VAB PAW components.
 * 2019-0706: 4.0.8 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - 1.7.x
 			- Added zh-cn localization courtesy duck1998.
