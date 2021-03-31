@@ -1,5 +1,13 @@
 # Aviation Lights :: Change Log
 
+* 2021-0331: 4.1.1.1 (LisiasT) for KSP >= 1.3.0
+	+ Added KSPe facilities
+	+ Making it compatible from KSP 1.3.0 to the latest.
+	+ Merged updates from yamanaiyuki
+		- Japanese translation
+		- Adding stackable support on KSP 1.11
+	+ Added PT-BR translation
+	+ Added KIS support.
 * 2020-0705: 4.1.1 (MOARdV) for KSP 1.10.0
 	+ For KSP 1.10.0 - 5 July 2020 - v4.1.1
 			- Recompiled for KSP 1.10.0 (and finally updated the version file, alas).
