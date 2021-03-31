@@ -1,5 +1,9 @@
 # Aviation Lights :: Change Log
 
+* 2018-0407: 4.0.2 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - 1.4.2
+			- Fix: Emissive layer not updating correctly in flight (Issue #6).
+			- Tweakable lights configured as spot lights can switch between spot and point lighting modes in the editor (Issue #7).
 * 2018-0403: 4.0.1 (MOARdV) for KSP 1.4.0
 	+ For KSP 1.4.0 - KSP 1.4.2
 			- Added tags to the lights, including cck_lights for compatibility with the Community Category Kit.
