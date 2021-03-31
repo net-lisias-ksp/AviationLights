@@ -1,5 +1,10 @@
 # Aviation Lights :: Change Log
 
+* 2018-0331: 4.0.0 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - KSP 1.4.2
+	+ There are many changes in this version of Aviation Lights.  I recommend you spend a few minutes going through the [readme](https://github.com/MOARdV/AviationLights/blob/master/README.md) file.
+			- Old Aviation Lights are now hidden in the editor.  They may be unhidden using a Module Manager patch.
+			- New fully-configurable aviation light is available in the editor.  Light color and mode (navigation, beacon, strobe) are configurable using presets, housing and lens styles are configurable.  Using Advanced Tweakables allows more fine-tuning of the light.
 * 2017-0526: 3.14 (MOARdV) for KSP 1.3.0
 	+ For KSP 1.3.0 / 1.3.1
 	+ Fixes NRE in VAB/SPH when trying to set flash mode to Flash, Double Flash, or Interval.
