@@ -1,5 +1,9 @@
 # Aviation Lights :: Change Log
 
+* 2018-1221: 4.0.6 (MOARdV) for KSP 1.4.0
+	+ For KSP 1.4.0 - 1.6.x
+			- Added es-es localization courtesy fitiales.  Pull request #15.
+			- Scaled energy consumption based on light intensity.  Issue #13.
 * 2018-1016: 4.0.5.1 (MOARdV) for KSP 1.5.0
 	+ For KSP 1.5.0 and beyond
 			- Recompiled against KSP 1.5.0.
