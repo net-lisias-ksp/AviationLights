@@ -1,5 +1,7 @@
 # Aviation Lights :: Change Log
 
+* 2021-0517: 4.1.1.3 (LisiasT) for KSP >= 1.3.0
+	+ Reverting a bad decision.
 * 2021-0413: 4.1.1.2 (LisiasT) for KSP >= 1.3.0
 	+ Added KSPe facilities
 	+ Making it compatible from KSP 1.3.0 to the latest.
