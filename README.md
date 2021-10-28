@@ -1,8 +1,8 @@
-# Aviation Lights /L Unofficial
+# Aviation Lights /L Unleashed
 
 Aviation Lights for Kerbal Space Program.
 
-Unofficial fork by Lisias.
+[Unleashed](https://ksp.lisias.net/add-ons-unleashed/) fork by Lisias.
 
 
 ## In a Hurry

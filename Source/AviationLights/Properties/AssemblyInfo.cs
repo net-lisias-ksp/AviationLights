@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Aviation Lights /L Unofficial")]
+[assembly: AssemblyTitle("Aviation Lights /L Unleashed")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("L Aerospace/KSP Division")]
-[assembly: AssemblyProduct("AviationLights")]
-[assembly: AssemblyCopyright("© 2012 RPGprayer, © 2012-2018 BigNose, © 2018-2020 MOARdv, © 2021 LisiasT")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany(AviationLights.LegalMamboJambo.Company)]
+[assembly: AssemblyProduct(AviationLights.LegalMamboJambo.Product)]
+[assembly: AssemblyCopyright(AviationLights.LegalMamboJambo.Copyright)]
+[assembly: AssemblyTrademark(AviationLights.LegalMamboJambo.Trademark)]
 [assembly: AssemblyCulture("")]
 
 // You can specify all the values or you can default the Build and Revision Numbers 
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion(AviationLights.Version.Number)]
 
 [assembly: KSPAssembly("AviationLights", AviationLights.Version.major, AviationLights.Version.minor)]
-[assembly: KSPAssemblyDependency("KSPe", 2, 2)]
-[assembly: KSPAssemblyDependency("KSPe.UI", 2, 2)]
+[assembly: KSPAssemblyDependency("KSPe", 2, 4)]
+[assembly: KSPAssemblyDependency("KSPe.UI", 2, 4)]
