@@ -29,8 +29,7 @@ Example of the correct use in KSP:
 
 But, of course, this is KSP. You can just put them on where it looks cool. :D
 
-**Warning Lights** (both "Strobe" and "Beacon") are flashing lights to enhance
-visibility in bad weather and to warn air traffic and ground personnel.
+**Warning Lights** (both "Strobe" and "Beacon") are flashing lights to enhance visibility in bad weather and to warn air traffic and ground personnel.
 
 Beacons are typically mounted on the tip of the vertical tail on smaller planes, or in the middle of the fuselage (top and/or bottom) on larger aircraft. They're red, bright and flashing to indicate that parts of the airplane (engines) are moving or the airplane itself is about to move.
 
@@ -44,12 +43,14 @@ Aviation Lights support localization.
 
 ### Legacy Aviation Lights
 
-The legacy aviation lights from Aviation Lights 3.x do not appear in the editor by default. There is a file in `AviationLights/Patches` named `MM_UnhideOldLights.nocfg`. Rename that file to `MM_UnhideOldLights.cfg` and ModuleManager (if installed) will update the legacy lights so they are available in the editor. If you do not wish to include the old parts in your installation, and you do not have any vessels currently using those lights, feel free to delete the
-AviationLights/Parts/lights folder. The Aviation Lights light is in AviationLights/Parts.
+The legacy aviation lights from Aviation Lights 3.x do not appear in the editor by default on KSP >= 1.4, but are now available on KSP 1.3. 
+
+If you do not wish to include the old parts in your installation, and you do not have any vessels currently using those lights, feel free to delete the
+`AviationLights/Parts/lights` folder.
 
 ### B9 Part Switcher
 
-If you wish to use B9 Part Switcher instead of the stock part variants feature, rename `MM_B9PartSwitch.nocfg` to `MM_B9PartSwitch.cfg`. This will not update existing parts, so it's don't recommend changing this in an existing save without recovering craft and reconfiguring in the VAB.
+If you wish to use B9 Part Switcher instead of the stock part variants feature, rename `MM_B9PartSwitch.nocfg` to `MM_B9PartSwitch.cfg`. This will not update existing parts, so it's not recommended changing this in an existing save without recovering craft and reconfiguring in the VAB.
 
 ### VAB/SPH CONFIGURATION
 
@@ -75,9 +76,9 @@ If the part is configured as a spot light (the SpotAngle config field is greater
 
 In addition to the conventional "Light on" and "Light off" settings, Aviation Lights may be configured to flash using one of three patterns. The all-caps / all-lower below describes the pattern (ALL-CAPS = light is on, all-lower = light is off), with the name reporting which config value controls how long the light spends in that state.
 
-* **Flash**: `FLASHON-flashoff` - In this mode, the light flashes on and off. However, instead of spending an equal amount of time on and off, the timing is different.
-The `FlashOn` setting in the config controls how long the light will switch on, and `FlashOff` controls how long it remains off.
-* **Double Flash**: `FLASHON-flashon-FLASHON-flashoff` - In this mode, the light flashes on and off. The on time is a double flash - the light will turn on, turn off, and turn on again before turning off for a longer period of time. The `FlashOff` setting controls how long the light remains off, while `FlashOn` controls how long the light remains on as well as how long it switches off between the double flashes.
+* **Flash**: `FLASHON-flashoff` - In this mode, the light flashes on and off.  The time spent with the light on may be different than the time with the light off.
+* **Double Flash**: `FLASHON-flashon-FLASHON-flashoff` - In this mode, the light flashes on and off.  The on time is a double flash - the light will turn on, turn off, and turn on again before turning off for a different period of time.  The `FlashOff` setting controls how long the light remains off after the double flash, while `FlashOn` controls how long the light
+remains on as well as how long it switches off between the double flashes.
 * **Interval**: `INTERVAL-interval` - In this mode, the light flashes evenly on and off. The amount of time spent on or off is controlled by the `Interval` setting in the config.
 
 ### PRESETS
@@ -142,7 +143,7 @@ AVIATION_LIGHTS_PRESET_COLORS
 
 ### MODULE CONFIGURATION
 
-There are a number of fields in ModuleNavLight that allow customisation of a part. Default values are shown below.
+There are a number of fields in ModuleNavLight that allow creation of a custom of a part. Default values are shown below.
 
 ```
 MODULE
@@ -172,21 +173,21 @@ MODULE
 
 #### Light Color
 
-The light color values default to a white navigation light. However, the config file allows other settings to be used for pre-configured lights, such as AL 3.x style Aviation Lights. When `Tweakable` = `true`, the color may be changed using the
-Color Preset control in the part menu, and the Intensity and Range may be changed with the Type Preset control. In addition, the color, intensity, and range may be edited directly by enabling Advanced Tweakables.
+The light color values default to a white navigation light.  The color fields allow a part creator to set up a light for a specific purpose by defining the color, intensity, and range of the light. When `Tweakable = true`, the color may be changed using the Color Preset control in the part menu, and the Intensity and Range may be changed with the Type Preset control.  In addition, the color, intensity, and range may be edited directly by enabling Advanced Tweakables.
 
 * **Color**: The RGB color of the light. Valid values are from 0 to 1 for each channel.
 * **Intensity**: The intensity of the light. Brighter lights should use larger values. Valid numbers range from 0 to 8. Nav lights use 0.5. Energy consumption
 is affected by Intensity.
-* **Range**: The range of the light, in meters.
+* **Range**: The range of the light, in meters.  This setting controls how far from the light any illumination is projected.  Objects outside this range are not illuminated by the light.
 
 #### Flash Timing
 
-The default flash timing pattern is for a navigation light.  Flash timing is one component of the Type Preset when `Tweakable` = `true`, which means that custom timings may be overridden in the Editor. If the custom timing does not also have a type preset defined for it, it will not be possible for a player to restore custom timing on a light without removing it and attaching a new one. All times are measured in seconds.
+The default flash timing values are for a navigation light.   Flash timing is one component of the Type Preset when `Tweakable` = `true`, which means that custom timings may be overridden in the Editor. If the custom timing does not also have a type preset defined for it, it will not be possible for a player to restore custom timing on a light without removing it and attaching a new one. All times are measured in seconds.
 
 * **Interval**: How long the light stays on or stays off when it is in Interval mode.
 * **FlashOn**: How long the light stays on in Flash mode or Double Flash mode, and how long it stays off between the two flashes in Double Flash mode.
-* **FlashOff**: How long the light stays off in Flash mode or Double Flash mode.
+* **FlashOff**: How long the light stays off in Flash mode or after the second flash in Double Flash mode.
+
 
 #### Resources
 
