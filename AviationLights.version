@@ -1,9 +1,9 @@
 {
-	"NAME"		: "Aviation Lights /L Unleashed",
-	"URL"		: "https://raw.githubusercontent.com/net-lisias-kspu/AviationLights/master/AviationLights.version",
-	"DOWNLOAD"	: "https://github.com/net-lisias-kspu/AviationLights/releases",
-	"CHANGE_LOG"	: "https://raw.githubusercontent.com/net-lisias-kspu/AviationLights/master/CHANGE_LOG.md",
-	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/net-lisias-kspu/AviationLights/master/CHANGES.md",
+	"NAME"		: "Aviation Lights /L",
+	"URL"		: "https://raw.githubusercontent.com/net-lisias-ksp/AviationLights/master/AviationLights.version",
+	"DOWNLOAD"	: "https://github.com/net-lisias-ksp/AviationLights/releases",
+	"CHANGE_LOG"	: "https://raw.githubusercontent.com/net-lisias-ksp/AviationLights/master/CHANGE_LOG.md",
+	"CHANGE_LOG_URL": "https://raw.githubusercontent.com/net-lisias-ksp/AviationLights/master/CHANGES.md",
 	"VERSION":{
 		"MAJOR":4,
 		"MINOR":1,

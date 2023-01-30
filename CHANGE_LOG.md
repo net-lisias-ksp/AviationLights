@@ -1,4 +1,4 @@
-# Aviation Lights /L Unleashed :: Change Log
+# Aviation Lights /L :: Change Log
 
 * 2021-1029: 4.1.1.4 (LisiasT) for KSP >= 1.3.0
 	+ Updating KSPe to v2.4

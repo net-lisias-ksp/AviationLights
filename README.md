@@ -1,21 +1,25 @@
-# Aviation Lights /L Unleashed
+# Aviation Lights /L
 
 Aviation Lights for Kerbal Space Program.
 
-[Unleashed](https://ksp.lisias.net/add-ons-unleashed/) fork by Lisias.
+Now under Lisias' Management!
 
 
 ## In a Hurry
 
-* [Latest Release](https://github.com/net-lisias-kspu/AviationLights/releases)
-	+ [Binaries](https://github.com/net-lisias-kspu/AviationLights/tree/Archive)
-* [Source](https://github.com/net-lisias-kspu/AviationLights)
 * Documentation
-	+ [Project's README](https://github.com/net-lisias-kspu/AviationLights/blob/master/README.md)
-	+ [Install Instructions](https://github.com/net-lisias-kspu/AviationLights/blob/master/INSTALL.md)
-	+ [Change Log](https://github.com/net-lisias-kspu/AviationLights/blob/master/CHANGE_LOG.md)
-	+ [Known Issues](https://github.com/net-lisias-kspu/AviationLights/blob/master/KNOWN_ISSUES.md)
-
+	+ Forum - Soon™
+	+ [Project's README](https://github.com/net-lisias-ksp/AviationLights/blob/master/README.md)
+	+ [Install Instructions](https://github.com/net-lisias-ksp/AviationLights/blob/master/INSTALL.md)
+	+ [Change Log](https://github.com/net-lisias-ksp/AviationLights/blob/master/CHANGE_LOG.md)
+	+ [Known Issues](https://github.com/net-lisias-ksp/AviationLights/blob/master/KNOWN_ISSUES.md)
+* Official Distribution Sites:
+	+ CurseForge - Soon™
+	+ SpaceDock - Soon™
+	+ [Homepage](http://ksp.lisias.net/add-ons/TweakScale) on L Aerospace
+	+ [Source and Binaries](https://github.com/net-lisias-ksp/AviationLights) on GitHub.
+	+ [Latest Release](https://github.com/net-lisias-ksp/AviationLights/releases)
+		- [Binaries](https://github.com/net-lisias-ksp/AviationLights/Archive)
 
 ## Description
 
@@ -231,18 +235,20 @@ Additional credits go to Deadweasel, Why485, GROOV3ST3R, JDP and J.Random for th
 
 StoneBlue provided the Aviation Lights 4.0 configurable light.
 
+MOARdV kept it ongoing for many years.
+
 
 ## UPSTREAM
 
-* [RPGprayer](https://forum.kerbalspaceprogram.com/index.php?/profile/8534-rpgprayer/) ROOT
-	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/7950-*/)
-	+ [SendSpace](https://www.sendspace.com/file/egsak6) (MIA)
+* [MOARdv](https://forum.kerbalspaceprogram.com/index.php?/profile/60950-moardv/) PREVIOUS
+	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/173305-*/) 
+	+ [Github](https://github.com/MOARdV/AviationLights)
 * [BigNose](https://forum.kerbalspaceprogram.com/index.php?/profile/35713-bignose/)
 	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/16801-*/) 
 	+ [Github](https://github.com/MOARdV/AviationLights)
-* [MOARdv](https://forum.kerbalspaceprogram.com/index.php?/profile/60950-moardv/) CURRENT
-	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/173305-*/) 
-	+ [Github](https://github.com/MOARdV/AviationLights)
+* [RPGprayer](https://forum.kerbalspaceprogram.com/index.php?/profile/8534-rpgprayer/) ROOT
+	+ [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/7950-*/)
+	+ [SendSpace](https://www.sendspace.com/file/egsak6) (MIA)
 
 ### References
 

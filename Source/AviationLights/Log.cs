@@ -1,6 +1,6 @@
 ﻿/*
-	This file is part of Aviation Lights /L Unleashed
-		© 2021 Lisias T : http://lisias.net <support@lisias.net>
+	This file is part of Aviation Lights /L
+		© 2021-2023 LisiasT : http://lisias.net <support@lisias.net>
 
 	THIS FILE is licensed to you under:
 

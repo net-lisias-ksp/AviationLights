@@ -1,4 +1,4 @@
-# Aviation Lights /L Unleashed :: Known Issues
+# Aviation Lights /L :: Known Issues
 
 None at this moment. :)
 

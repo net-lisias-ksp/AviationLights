@@ -1,15 +1,14 @@
 ﻿/*
-	This file is part of Aviation Lights /L Unleashed
-		© 2021 Lisias T : http://lisias.net <support@lisias.net>
-		© 2018-2020 MOARdv
+	This file is part of Aviation Lights /L
+		© 2021-2023 LisiasT : http://lisias.net <support@lisias.net>
+		© 2018-2023 MOARdv
 		© 2012-2018 BigNose
 		© 2012 RPGprayer
 
-	Aviation Lights /L Unleashed is licensed as follows:
-
+	Aviation Lights /L is licensed as follows:
 		* CC-BY-NC-SA 4.0i : https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-	Aviation Lights /L Unleashed is distributed in the hope that
+	Aviation Lights /L is distributed in the hope that
 	it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 	warranty of	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
