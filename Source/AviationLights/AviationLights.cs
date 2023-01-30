@@ -123,7 +123,7 @@ namespace AviationLights
 
         [KSPField(isPersistant = true, guiActiveEditor = true, guiName = "#AL_LightMode")]
         [UI_ChooseOption(affectSymCounterparts = UI_Scene.None, scene = UI_Scene.Editor, suppressEditorShipModified = true)]
-        public int toggleModeSelector = (int)NavLightState.Flash - 1;
+        public int toggleModeSelector = (int)NavLightState.Off;
 
         // Controls whether in-editor tweakable configurations are permitted.  We don't
         // really want the old parts to use the tweaks, since it'll look odd.
