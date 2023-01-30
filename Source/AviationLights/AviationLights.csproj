@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="KSPe.Light.AviationLights">
       <HintPath>..\..\..\..\..\..\LIB\plugins\KSPe.Light.AviationLights.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +60,7 @@
     <Compile Include="Log.cs" />
     <Compile Include="Properties\LegalMamboJambo.cs" />
     <Compile Include="ModuleManagerSupport.cs" />
+    <Compile Include="Globals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Version.tt">

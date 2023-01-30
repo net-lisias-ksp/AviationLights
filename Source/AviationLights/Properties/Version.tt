@@ -89,9 +89,9 @@ namespace <#= PROJECT_NAME #>
 		//public const string Vendor = "net.lisias.ksp";
 
 	#if DEBUG
-		public const string Text = Number + " /L Unleashed DEBUG";
+		public const string Text = Number + " /L DEBUG";
 	#else
-		public const string Text = Number + " /L Unleashed";
+		public const string Text = Number + " /L";
 	#endif
 	}
 }

@@ -47,6 +47,11 @@ namespace AviationLights
 			log.detail(msg, @params);
 		}
 
+		internal static void error(Exception e, string msg, params object[] @params)
+		{
+			log.error(e, msg, @params);
+		}
+
 		internal static void error(Exception e, object offended)
 		{
 			log.error(offended, e);

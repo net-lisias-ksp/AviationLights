@@ -145,6 +145,12 @@ namespace AviationLights
         /// </summary>
         public void Start()
         {
+			{
+				BaseField field = Fields["Range"];
+				UI_FloatRange range = (UI_FloatRange)field.uiControlEditor;
+				range.maxValue = Globals.RangeMaxValueInMeters;
+			}
+
             if (!string.IsNullOrEmpty(LensTransform))
             {
                 string[] lensNames = LensTransform.Split(';');
