@@ -50,7 +50,9 @@ Aviation Lights support localization.
 The legacy aviation lights from Aviation Lights 3.x do not appear in the editor by default on KSP >= 1.4, but are now available on KSP 1.3. 
 
 If you do not wish to include the old parts in your installation, and you do not have any vessels currently using those lights, feel free to delete the
-`AviationLights/Parts/lights` folder.
+`AviationLights/Parts/lights` folder - unless you are running KSP 1.3.x .
+
+On the other hand, if you **want** to use them even on modern KSPs, create a directory on `GameData` called `AviationLights_LEGACY` (or create a config file with a dummy MM patch defining the symbol `AviationLights_LEGACY` in a `:FOR`).
 
 ### B9 Part Switcher
 
