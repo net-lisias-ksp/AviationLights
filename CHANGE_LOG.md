@@ -1,5 +1,11 @@
 # Aviation Lights /L Unleashed :: Change Log
 
+* 2023-0129: 4.1.3.0 (MOARDdV) for KSP >= 1.12.0
+	Removed the legacy (Aviation Lights 3.x) lights.
+	Fix pt-br localization, also courtesy Lisias.
+	+ Recompiled for KSP 1.12
+	+ B9 patches may need updated. They are disabled by default.
+	+ Placed up for adoption.
 * 2021-1029: 4.1.1.4 (LisiasT) for KSP >= 1.3.0
 	+ Updating KSPe to v2.4
 	+ Properly patching the parts to be activated or deactivated depending on the KSP version you are using.
