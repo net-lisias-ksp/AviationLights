@@ -21,7 +21,7 @@
 	MODULE
 	{
 		name = ModuleB9PartSwitch
-		description = :NEEDS[B9PartSwitch]
+		description = Changes housing
 		moduleID = housing
 		switcherDescription = Housing
 		switcherDescriptionPlural = Housing Material:
@@ -45,7 +45,7 @@
 	MODULE
 	{
 		name = ModuleB9PartSwitch
-		description = :NEEDS[B9PartSwitch]
+		description = Changes lens
 		moduleID = lens
 		switcherDescription = Lens
 		switcherDescriptionPlural = Lens Types:
