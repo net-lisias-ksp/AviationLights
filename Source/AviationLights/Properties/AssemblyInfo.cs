@@ -30,5 +30,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion(AviationLights.Version.Number)]
 
 [assembly: KSPAssembly("AviationLights", AviationLights.Version.major, AviationLights.Version.minor)]
-[assembly: KSPAssemblyDependency("KSPe", 2, 4)]
-[assembly: KSPAssemblyDependency("KSPe.UI", 2, 4)]
+[assembly: KSPAssemblyDependency("KSPe.Light.AviationLights", 2, 4)]
