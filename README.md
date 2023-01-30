@@ -43,7 +43,14 @@ In addition to the standard navigation and warning light colors, there are amber
 
 ### Localization
 
-Aviation Lights support localization.
+Aviation Lights supports localization. Currently available:
+
+* en-us
+* es-es
+* fr-fr
+* ja
+* pt-br
+* zh-cn
 
 ### Legacy Aviation Lights
 
