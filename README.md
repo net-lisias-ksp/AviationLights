@@ -56,7 +56,7 @@ On the other hand, if you **want** to use them even on modern KSPs, create a dir
 
 ### B9 Part Switcher
 
-If you wish to use B9 Part Switcher instead of the stock part variants feature, rename `MM_B9PartSwitch.nocfg` to `MM_B9PartSwitch.cfg`. This will not update existing parts, so it's not recommended changing this in an existing save without recovering craft and reconfiguring in the VAB.
+Suport for B9 Part Switcher is now activated by default if `ModuleB9PartSwitch` is found.
 
 ### VAB/SPH CONFIGURATION
 
