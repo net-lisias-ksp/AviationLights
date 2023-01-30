@@ -14,8 +14,8 @@ Now under Lisias' Management!
 	+ [Change Log](https://github.com/net-lisias-ksp/AviationLights/blob/master/CHANGE_LOG.md)
 	+ [Known Issues](https://github.com/net-lisias-ksp/AviationLights/blob/master/KNOWN_ISSUES.md)
 * Official Distribution Sites:
-	+ CurseForge - Soon™
-	+ SpaceDock - Soon™
+	+ [CurseForge](https://www.curseforge.com/kerbal/ksp-mods/aviation-lights-l)
+	+ [SpaceDock](https://spacedock.info/mod/3208/Aviation%20Lights)
 	+ [Homepage](http://ksp.lisias.net/add-ons/TweakScale) on L Aerospace
 	+ [Source and Binaries](https://github.com/net-lisias-ksp/AviationLights) on GitHub.
 	+ [Latest Release](https://github.com/net-lisias-ksp/AviationLights/releases)
