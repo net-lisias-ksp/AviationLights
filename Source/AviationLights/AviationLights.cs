@@ -562,8 +562,11 @@ namespace AviationLights
                 switch ((NavLightState)navLightSwitch)
                 {
                     case NavLightState.Off:
+                        this.UpdateLights(false);
+                        break;
+
                     case NavLightState.On:
-                        // No-op - taken care of when mode was selected.
+                        this.UpdateLights(true);
                         break;
 
                     case NavLightState.Flash:
