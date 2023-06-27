@@ -1,5 +1,8 @@
 # Aviation Lights /L :: Changes
 
+* 2023-0627: 4.2.0.2 (LisiasT) for KSP >= 1.3.0
+	+ A small glitch on handling Flashing Lights was detected and fixed.
+	+ A stupid mistake on handling ModuleManager callbacks was detected and fixed.
 * 2023-0130: 4.2.0.1 (LisiasT) for KSP >= 1.3.0
 	+ Formal adoption of the thing. **#HURRAY!!**
 	+ Updating it to use `KSPe.Light`
