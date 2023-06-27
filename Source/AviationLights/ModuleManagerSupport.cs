@@ -15,7 +15,7 @@ using IO = KSPe.IO;
 using Directory = KSPe.IO.Directory;
 using Path = KSPe.IO.Path;
 
-namespace HLAirshipsCore
+namespace AviationLights
 {
 	public class ModuleManagerSupport : UnityEngine.MonoBehaviour
 	{
