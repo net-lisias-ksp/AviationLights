@@ -54,7 +54,7 @@ Aviation Lights supports localization. Currently available:
 
 ### Legacy Aviation Lights
 
-Found a nice craft file on [KerbalX](https://kerbalx.com) but it was made KSP 1.3 and the old lights are not available anymore? Not anymore, we have you covered, Veteran! Aviation Lights /L has full support for legacy crafts made on the Old Days! The legacy aviation lights from Aviation Lights 3.x do not appear in the editor by default on KSP >= 1.4, but are available when running on KSP 1.3. 
+Found a nice craft file on [KerbalX](https://kerbalx.com) but it was made for KSP 1.3 and the old lights are not available anymore? We have you covered, Veteran! Aviation Lights /L has full support for legacy crafts made on the Old Days! The legacy aviation lights from Aviation Lights 3.x do not appear in the editor by default on KSP >= 1.4, but are available when running on KSP 1.3. 
 
 If you do not wish to include the old parts in your installation, and you do not have any vessels currently using those lights, feel free to delete the
 `AviationLights/Parts/lights` folder - unless you are running KSP 1.3.x .
