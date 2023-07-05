@@ -1,5 +1,11 @@
 # Aviation Lights /L :: Change Log
 
+* 2023-0705: 4.2.1.0 (LisiasT) for KSP >= 1.3.0
+	+ New Action to turn on whatever is the current mode at the moment
+		- The Toggle Action was correctly labeled (and localized)
+		- Less confusion on Editor when configuring Actions
+	+ Enhanced API to make easier 3rd parties interactions
+	+ The different modes toggles now really toggles the Light no matter what is the current mode.
 * 2023-0627: 4.2.0.2 (LisiasT) for KSP >= 1.3.0
 	+ A small glitch on handling Flashing Lights was detected and fixed.
 	+ A stupid mistake on handling ModuleManager callbacks was detected and fixed.
