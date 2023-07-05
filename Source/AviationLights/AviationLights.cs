@@ -810,21 +810,21 @@ namespace AviationLights
                 case (int)NavLightState.Flash:
                 default:
                     // For the toggle mode, always force the default to ModeFlash.  Toggle mode should never be set to Off.
-                    toggleBaseEvent.guiName = "#AL_ToggleFlash";
-                    toggleBaseAction.guiName = "#AL_ToggleFlash";
+                    toggleBaseEvent.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#AL_ToggleFlash" ;
+                    toggleBaseAction.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#AL_ToggleFlash" ;
                     toggleMode = (int)NavLightState.Flash;
                     break;
                 case (int)NavLightState.DoubleFlash:
-                    toggleBaseEvent.guiName = "#AL_ToggleDoubleFlash";
-                    toggleBaseAction.guiName = "#AL_ToggleDoubleFlash";
+                    toggleBaseEvent.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#AL_ToggleDoubleFlash" ;
+                    toggleBaseAction.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#AL_ToggleDoubleFlash" ;
                     break;
                 case (int)NavLightState.Interval:
-                    toggleBaseEvent.guiName = "#AL_ToggleInterval";
-                    toggleBaseAction.guiName = "#AL_ToggleInterval";
+                    toggleBaseEvent.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#AL_ToggleInterval" ;
+                    toggleBaseAction.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#AL_ToggleInterval" ;
                     break;
                 case (int)NavLightState.On:
-                    toggleBaseEvent.guiName = "#autoLOC_6001405";
-                    toggleBaseAction.guiName = "#autoLOC_6001405";
+                    toggleBaseEvent.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#autoLOC_6001405" ;
+                    toggleBaseAction.guiName = HighLogic.LoadedSceneIsEditor ? "#AL_ToggleSelectedMode" : "#autoLOC_6001405" ;
                     break;
             }
             toggleModeSelector = toggleMode - 1;
@@ -850,7 +850,7 @@ namespace AviationLights
         //--- "Toggle" action group actions ----------------------------------
 
         [KSPAction("#AL_ToggleSelectedMode", KSPActionGroup.Light)]
-        public void CurrentModeToggle(KSPActionParam param) => this.ToggleEvent();
+        public void CurrentModeToggle(KSPActionParam param) => this.ToggleCurrentMode();
 
         [KSPAction("#autoLOC_6001405", KSPActionGroup.None)]
         public void LightToggle(KSPActionParam param) => this.ToggleLightOn();
