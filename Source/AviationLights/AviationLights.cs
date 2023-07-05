@@ -893,7 +893,7 @@ namespace AviationLights
 
         public void ToggleCurrentMode()
         {
-            navLightSwitch = (navLightSwitch == toggleMode) ? (int)NavLightState.Off : toggleMode;
+            navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : toggleMode;
             this.UpdateMe();
         }
 
@@ -905,7 +905,7 @@ namespace AviationLights
 
         public void ToggleLightOn()
         {
-            navLightSwitch = (navLightSwitch == (int)NavLightState.On) ? (int)NavLightState.Off : (int)NavLightState.On;
+            navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.On;
             toggleMode = (int)NavLightState.On;
             this.UpdateMe();
         }
@@ -918,7 +918,7 @@ namespace AviationLights
 
         public void ToggleLightFlash()
         {
-            navLightSwitch = (navLightSwitch == (int)NavLightState.Flash) ? (int)NavLightState.Off : (int)NavLightState.Flash;
+            navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.Flash;
             toggleMode = (int)NavLightState.Flash;
             this.UpdateMe();
         }
@@ -931,7 +931,7 @@ namespace AviationLights
 
         public void ToggleLightDoubleFlash()
         {
-            navLightSwitch = (navLightSwitch == (int)NavLightState.DoubleFlash) ? (int)NavLightState.Off : (int)NavLightState.DoubleFlash;
+            navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.DoubleFlash;
             toggleMode = (int)NavLightState.DoubleFlash;
             this.UpdateMe();
         }
@@ -944,7 +944,7 @@ namespace AviationLights
 
         public void ToggleLightInterval()
         {
-            navLightSwitch = (navLightSwitch == (int)NavLightState.Interval) ? (int)NavLightState.Off : (int)NavLightState.Interval;
+            navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.Interval;
             toggleMode = (int)NavLightState.Interval;
             this.UpdateMe();
         }
