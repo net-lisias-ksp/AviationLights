@@ -833,138 +833,124 @@ namespace AviationLights
         //--- "Toggle" action group actions ----------------------------------
 
         [KSPAction("#AL_ToggleSelectedMode", KSPActionGroup.Light)]
-        public void CurrentModeToggle(KSPActionParam param)
-        {
-            ToggleEvent();
-        }
+        public void CurrentModeToggle(KSPActionParam param) => this.ToggleEvent();
 
         [KSPAction("#autoLOC_6001405", KSPActionGroup.None)]
-        public void LightToggle(KSPActionParam param)
-        {
-            ToggleLightOn();
-        }
+        public void LightToggle(KSPActionParam param) => this.ToggleLightOn();
 
         [KSPAction("#AL_ToggleFlash", KSPActionGroup.None)]
-        public void FlashToggle(KSPActionParam param)
-        {
-            ToggleLightFlash();
-        }
+        public void FlashToggle(KSPActionParam param) => this.ToggleLightFlash();
 
         [KSPAction("#AL_ToggleDoubleFlash", KSPActionGroup.None)]
-        public void DoubleFlashToggle(KSPActionParam param)
-        {
-            ToggleLightDoubleFlash();
-        }
+        public void DoubleFlashToggle(KSPActionParam param) => this.ToggleLightDoubleFlash();
 
         [KSPAction("#AL_ToggleInterval", KSPActionGroup.None)]
-        public void IntervalToggle(KSPActionParam param)
-        {
-            ToggleLightInterval();
-        }
+        public void IntervalToggle(KSPActionParam param) => this.ToggleLightInterval();
 
         //--- "Set" action group actions -------------------------------------
 
         [KSPAction("#AL_SetSelectedMode", KSPActionGroup.None)]
-        public void CurrentModeOnAction(KSPActionParam param)
-        {
-            navLightSwitch = toggleMode;
-
-            UpdateMode();
-            UpdateSymmetry();
-        }
+        public void CurrentModeOnAction(KSPActionParam param) => this.SetCurrentModeOn();
 
         [KSPAction("#autoLOC_6001406", KSPActionGroup.None)]
-        public void LightOnAction(KSPActionParam param)
-        {
-            navLightSwitch = (int)NavLightState.On;
-            toggleMode = navLightSwitch;
-
-            UpdateMode();
-            UpdateSymmetry();
-        }
+        public void LightOnAction(KSPActionParam param) => this.SetLightOn();
 
         [KSPAction("#AL_SetFlash", KSPActionGroup.None)]
-        public void LightFlashAction(KSPActionParam param)
-        {
-            navLightSwitch = (int)NavLightState.Flash;
-            toggleMode = navLightSwitch;
-
-            UpdateMode();
-            UpdateSymmetry();
-        }
+        public void LightFlashAction(KSPActionParam param) => this.SetLightFlashOn();
 
         [KSPAction("#AL_SetDoubleFlash", KSPActionGroup.None)]
-        public void LightDoubleFlashAction(KSPActionParam param)
-        {
-            navLightSwitch = (int)NavLightState.DoubleFlash;
-            toggleMode = navLightSwitch;
-
-            UpdateMode();
-            UpdateSymmetry();
-        }
+        public void LightDoubleFlashAction(KSPActionParam param) => this.SetLightDoubleFlashOn();
 
         [KSPAction("#AL_SetInterval", KSPActionGroup.None)]
-        public void LightIntervalAction(KSPActionParam param)
-        {
-            navLightSwitch = (int)NavLightState.Interval;
-            toggleMode = navLightSwitch;
-
-            UpdateMode();
-            UpdateSymmetry();
-        }
+        public void LightIntervalAction(KSPActionParam param) => this.SetLightIntervalOn();
 
         [KSPAction("#autoLOC_6001407", KSPActionGroup.None)]
-        public void LightOffAction(KSPActionParam param)
-        {
-            navLightSwitch = (int)NavLightState.Off;
-
-            UpdateMode();
-            UpdateSymmetry();
-        }
+        public void LightOffAction(KSPActionParam param) => this.SetLightOff();
 
         //--- Part context menu events ---------------------------------------
 
-        [KSPEvent(guiActive = true, guiActiveEditor = true, guiName = "#AL_ToggleFlash")]
+        [KSPEvent(guiActive = true, guiActiveEditor = true, guiName = "#AL_ToggleSelectedMode")]
         public void ToggleEvent()
         {
-            navLightSwitch = (navLightSwitch == toggleMode) ? (int)NavLightState.Off : toggleMode;
+            this.ToggleCurrentMode();
+        }
 
-            UpdateMode();
-            UpdateSymmetry();
+        //--- Public Interface -----------------------------------------------
+
+        public bool IsLightTurnedOn => NavLightState.Off != (NavLightState)this.navLightSwitch;
+
+        public void SetLightOff()
+        {
+            navLightSwitch = (int)NavLightState.Off;
+            this.UpdateMe();
+        }
+
+        public void SetCurrentModeOn()
+        {
+            navLightSwitch = toggleMode;
+            this.UpdateMe();
+        }
+
+        public void ToggleCurrentMode()
+        {
+            navLightSwitch = (navLightSwitch == toggleMode) ? (int)NavLightState.Off : toggleMode;
+            this.UpdateMe();
+        }
+
+        public void SetLightOn()
+        {
+            toggleMode = navLightSwitch = (int)NavLightState.On;
+            this.UpdateMe();
         }
 
         public void ToggleLightOn()
         {
             navLightSwitch = (navLightSwitch == (int)NavLightState.On) ? (int)NavLightState.Off : (int)NavLightState.On;
             toggleMode = (int)NavLightState.On;
+            this.UpdateMe();
+        }
 
-            UpdateMode();
-            UpdateSymmetry();
+        public void SetLightFlashOn()
+        {
+            toggleMode = navLightSwitch = (int)NavLightState.Flash;
+            this.UpdateMe();
         }
 
         public void ToggleLightFlash()
         {
             navLightSwitch = (navLightSwitch == (int)NavLightState.Flash) ? (int)NavLightState.Off : (int)NavLightState.Flash;
             toggleMode = (int)NavLightState.Flash;
+            this.UpdateMe();
+        }
 
-            UpdateMode();
-            UpdateSymmetry();
+        public void SetLightDoubleFlashOn()
+        {
+            toggleMode = navLightSwitch = (int)NavLightState.DoubleFlash;
+            this.UpdateMe();
         }
 
         public void ToggleLightDoubleFlash()
         {
             navLightSwitch = (navLightSwitch == (int)NavLightState.DoubleFlash) ? (int)NavLightState.Off : (int)NavLightState.DoubleFlash;
             toggleMode = (int)NavLightState.DoubleFlash;
+            this.UpdateMe();
+        }
 
-            UpdateMode();
-            UpdateSymmetry();
+        public void SetLightIntervalOn()
+        {
+            toggleMode = navLightSwitch = (int)NavLightState.Interval;
+            this.UpdateMe();
         }
 
         public void ToggleLightInterval()
         {
             navLightSwitch = (navLightSwitch == (int)NavLightState.Interval) ? (int)NavLightState.Off : (int)NavLightState.Interval;
             toggleMode = (int)NavLightState.Interval;
+            this.UpdateMe();
+        }
 
+        private void UpdateMe()
+        {
             UpdateMode();
             UpdateSymmetry();
         }
