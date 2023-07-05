@@ -40,6 +40,7 @@ namespace AviationLights
             public float interval;
             public float intensity;
             public float range;
+            public string name;
         }
 
         [KSPField(isPersistant = true)]
@@ -76,12 +77,12 @@ namespace AviationLights
         [UI_Toggle(disabledText = "#autoLOC_6001073", enabledText = "#autoLOC_6001074")]
         public bool applySymmetry = true;
 
-        [KSPField(guiActiveEditor = true, guiName = "#AL_TypePreset")]
+        [KSPField(isPersistant = true, guiActiveEditor = true, guiName = "#AL_TypePreset")]
         [UI_ChooseOption(affectSymCounterparts = UI_Scene.None, scene = UI_Scene.Editor, suppressEditorShipModified = true)]
         public int typePreset = 0;
         private List<TypePreset> presetTypes;
 
-        [KSPField(guiActiveEditor = true, guiName = "#AL_ColorPreset")]
+        [KSPField(isPersistant = true, guiActiveEditor = true, guiName = "#AL_ColorPreset")]
         [UI_ChooseOption(affectSymCounterparts = UI_Scene.None, scene = UI_Scene.Editor, suppressEditorShipModified = true)]
         public int colorPreset = 0;
 
@@ -140,11 +141,18 @@ namespace AviationLights
         private BaseEvent toggleBaseEvent;
         private BaseAction toggleBaseAction;
 
+        private delegate void UpdateDelegate();
+        private UpdateDelegate CurrentUpdate;
+
         /// <summary>
         /// Initialize game object / light, set up mode status and flasher controls.
         /// </summary>
         public void Start()
         {
+			if (HighLogic.LoadedSceneIsEditor)      this.CurrentUpdate = this.UpdateOnEditor;
+			else if (HighLogic.LoadedSceneIsFlight) this.CurrentUpdate = this.UpdateOnFlight;
+			else                                    this.CurrentUpdate = this.UpdateDummy;
+
 			{
 				BaseField field = Fields["Range"];
 				UI_FloatRange range = (UI_FloatRange)field.uiControlEditor;
@@ -319,15 +327,18 @@ namespace AviationLights
                     for (int typeIndex = 0; typeIndex < types.Length; ++typeIndex)
                     {
                         string guiName = string.Empty;
+                        string name = string.Empty;
                         float flashOn = 0.0f, flashOff = 0.0f, interval = 0.0f, intensity = 0.0f, range = 0.0f;
                         if (types[typeIndex].TryGetValue("guiName", ref guiName) &&
                             types[typeIndex].TryGetValue("flashOn", ref flashOn) &&
                             types[typeIndex].TryGetValue("flashOff", ref flashOff) &&
                             types[typeIndex].TryGetValue("interval", ref interval) &&
                             types[typeIndex].TryGetValue("intensity", ref intensity) &&
-                            types[typeIndex].TryGetValue("range", ref range))
+                            types[typeIndex].TryGetValue("range", ref range) &&
+                            types[typeIndex].TryGetValue("name", ref name)
+                        )
                         {
-                            if (presetNames.Contains(guiName) == false)
+                            if (!presetNames.Contains(guiName))
                             {
                                 presetNames.Add(guiName);
 
@@ -337,6 +348,7 @@ namespace AviationLights
                                 type.interval = Mathf.Max(interval, 0.0f);
                                 type.intensity = Mathf.Clamp(intensity, 0.0f, 8.0f);
                                 type.range = Mathf.Max(range, 0.0f);
+                                type.name = name;
 
                                 presetTypes.Add(type);
                             }
@@ -350,11 +362,13 @@ namespace AviationLights
                     UI_ChooseOption chooseOption = (UI_ChooseOption)chooseField.uiControlEditor;
                     chooseOption.options = presetNames.ToArray();
                     chooseOption.onFieldChanged = TypePresetChanged;
+                    this.typePreset = this.typePreset % presetNames.Count;
                 }
                 else
                 {
                     // No types?  No preset slider.
                     chooseField.guiActiveEditor = false;
+                    this.typePreset = 0;
                 }
 
                 chooseField = Fields["Intensity"];
@@ -484,12 +498,12 @@ namespace AviationLights
         {
             TypePreset newtype = presetTypes[typePreset];
 
-            FlashOn = newtype.flashOn;
-            FlashOff = newtype.flashOff;
-            Interval = newtype.interval;
-            Intensity = newtype.intensity;
-            Range = newtype.range;
-            actualEnergyReq = EnergyReq * Mathf.Max(0.25f, Intensity * Intensity);
+            this.FlashOn = newtype.flashOn;
+            this.FlashOff = newtype.flashOff;
+            this.Interval = newtype.interval;
+            this.Intensity = newtype.intensity;
+            this.Range = newtype.range;
+            this.actualEnergyReq = EnergyReq * Mathf.Max(0.25f, Intensity * Intensity);
 
             if (applySymmetry)
             {
@@ -498,11 +512,13 @@ namespace AviationLights
                     ModuleNavLight ml = p.FindModuleImplementing<ModuleNavLight>();
                     if (ml != null) // shouldn't ever be null?
                     {
-                        ml.FlashOn = FlashOn;
-                        ml.FlashOff = FlashOff;
-                        ml.Interval = Interval;
-                        ml.Intensity = Intensity;
-                        ml.Range = Range;
+                        ml.FlashOn = this.FlashOn;
+                        ml.FlashOff = this.FlashOff;
+                        ml.Interval = this.Interval;
+                        ml.Intensity = this.Intensity;
+                        ml.Range = this.Range;
+                        ml.typePreset = this.typePreset;
+                        ml.colorPreset = this.colorPreset;
                     }
                 }
             }
@@ -516,9 +532,9 @@ namespace AviationLights
         private void ColorPresetChanged(BaseField field, object oldFieldValueObj)
         {
             Color = presetColorValues[colorPreset];
-            lightR = Color.x;
-            lightG = Color.y;
-            lightB = Color.z;
+            this.lightR = Color.x;
+            this.lightG = Color.y;
+            this.lightB = Color.z;
 
             if (applySymmetry)
             {
@@ -531,6 +547,7 @@ namespace AviationLights
                         ml.lightR = lightR;
                         ml.lightG = lightG;
                         ml.lightB = lightB;
+                        ml.colorPreset = this.colorPreset;
                     }
                 }
             }
@@ -539,155 +556,155 @@ namespace AviationLights
         /// <summary>
         /// Check to update lights.
         /// </summary>
-        public void Update()
-        {
-            if (HighLogic.LoadedSceneIsFlight)
-            {
-                if (navLightSwitch != (int)NavLightState.Off && actualEnergyReq > 0.0f && TimeWarp.deltaTime > 0.0f)
-                {
-                    if (vessel.RequestResource(part, resourceId, actualEnergyReq * TimeWarp.deltaTime, true) < actualEnergyReq * TimeWarp.deltaTime * 0.5f)
-                    {
-                        UpdateLights(false);
-                        return;
-                    }
-                    else if (mainLight.intensity == 0.0f && navLightSwitch == (int)NavLightState.On)
-                    {
-                        // All other nav lights will reset below, but the On case is different.
-                        UpdateLights(true);
-                    }
-                }
+        public void Update() => this.CurrentUpdate();
 
-                elapsedTime += TimeWarp.deltaTime;
+		private void UpdateDummy() { }
+		private void UpdateOnFlight()
+		{
+			if (navLightSwitch != (int)NavLightState.Off && actualEnergyReq > 0.0f && TimeWarp.deltaTime > 0.0f)
+			{
+				if (vessel.RequestResource(part, resourceId, actualEnergyReq * TimeWarp.deltaTime, true) < actualEnergyReq * TimeWarp.deltaTime * 0.5f)
+				{
+					UpdateLights(false);
+					return;
+				}
+				else if (mainLight.intensity == 0.0f && navLightSwitch == (int)NavLightState.On)
+				{
+					// All other nav lights will reset below, but the On case is different.
+					UpdateLights(true);
+				}
+			}
 
-                switch ((NavLightState)navLightSwitch)
-                {
-                    case NavLightState.Off:
-                        this.UpdateLights(false);
-                        break;
+			elapsedTime += TimeWarp.deltaTime;
 
-                    case NavLightState.On:
-                        this.UpdateLights(true);
-                        break;
+			switch ((NavLightState)navLightSwitch)
+			{
+				case NavLightState.Off:
+					this.UpdateLights(false);
+					break;
 
-                    case NavLightState.Flash:
-                        // Lights are in 'Flash' mode
-                        if (elapsedTime >= nextInterval)
-                        {
-                            elapsedTime = elapsedTime % nextInterval;
+				case NavLightState.On:
+					this.UpdateLights(true);
+					break;
 
-                            flashCounter = (flashCounter + 1) & 1;
+				case NavLightState.Flash:
+					// Lights are in 'Flash' mode
+					if (elapsedTime >= nextInterval)
+					{
+						elapsedTime = elapsedTime % nextInterval;
 
-                            nextInterval = ((flashCounter & 1) == 1) ? FlashOn : FlashOff;
+						flashCounter = (flashCounter + 1) & 1;
 
-                            UpdateLights((flashCounter & 1) == 1);
-                        }
-                        break;
+						nextInterval = ((flashCounter & 1) == 1) ? FlashOn : FlashOff;
 
-                    case NavLightState.DoubleFlash:
-                        // Lights are in 'Double Flash' mode
-                        if (elapsedTime >= nextInterval)
-                        {
-                            elapsedTime = elapsedTime % nextInterval;
+						UpdateLights((flashCounter & 1) == 1);
+					}
+					break;
 
-                            flashCounter = (flashCounter + 1) & 3;
+				case NavLightState.DoubleFlash:
+					// Lights are in 'Double Flash' mode
+					if (elapsedTime >= nextInterval)
+					{
+						elapsedTime = elapsedTime % nextInterval;
 
-                            nextInterval = (flashCounter > 0) ? FlashOn : FlashOff;
+						flashCounter = (flashCounter + 1) & 3;
 
-                            UpdateLights((flashCounter & 1) == 1);
-                        }
-                        break;
+						nextInterval = (flashCounter > 0) ? FlashOn : FlashOff;
 
-                    case NavLightState.Interval:
-                        // Lights are in 'Interval' mode
-                        if (elapsedTime >= Interval)
-                        {
-                            elapsedTime = elapsedTime % Interval;
+						UpdateLights((flashCounter & 1) == 1);
+					}
+					break;
 
-                            flashCounter = (flashCounter + 1) & 1;
-                            UpdateLights((flashCounter & 1) == 1);
-                        }
-                        break;
-                }
-            }
-            else if (HighLogic.LoadedSceneIsEditor)
-            {
-                // Account for any tweakable tweaks.
-                Color.x = lightR;
-                Color.y = lightG;
-                Color.z = lightB;
+				case NavLightState.Interval:
+					// Lights are in 'Interval' mode
+					if (elapsedTime >= Interval)
+					{
+						elapsedTime = elapsedTime % Interval;
 
-                elapsedTime += Time.deltaTime;
+						flashCounter = (flashCounter + 1) & 1;
+						UpdateLights((flashCounter & 1) == 1);
+					}
+					break;
+			}
+		}
+		private void UpdateOnEditor()
+		{
+			// Account for any tweakable tweaks.
+			Color.x = lightR;
+			Color.y = lightG;
+			Color.z = lightB;
 
-                bool lightsOn = false;
-                switch ((NavLightState)navLightSwitch)
-                {
-                    case NavLightState.On:
-                        flashCounter = 1;
-                        break;
-                    case NavLightState.Off:
-                        flashCounter = 0;
-                        break;
+			elapsedTime += Time.deltaTime;
 
-                    case NavLightState.Flash:
-                        // Lights are in 'Flash' mode
-                        if (elapsedTime >= nextInterval)
-                        {
-                            elapsedTime = elapsedTime % nextInterval;
+			bool lightsOn = false;
+			switch ((NavLightState)navLightSwitch)
+			{
+				case NavLightState.On:
+					flashCounter = 1;
+					break;
+				case NavLightState.Off:
+					flashCounter = 0;
+					break;
 
-                            flashCounter = (flashCounter + 1) & 1;
+				case NavLightState.Flash:
+					// Lights are in 'Flash' mode
+					if (elapsedTime >= nextInterval)
+					{
+						elapsedTime = elapsedTime % nextInterval;
 
-                            nextInterval = ((flashCounter & 1) == 1) ? FlashOn : FlashOff;
-                        }
-                        break;
+						flashCounter = (flashCounter + 1) & 1;
 
-                    case NavLightState.DoubleFlash:
-                        // Lights are in 'Double Flash' mode
-                        if (elapsedTime >= nextInterval)
-                        {
-                            elapsedTime = elapsedTime % nextInterval;
+						nextInterval = ((flashCounter & 1) == 1) ? FlashOn : FlashOff;
+					}
+					break;
 
-                            flashCounter = (flashCounter + 1) & 3;
+				case NavLightState.DoubleFlash:
+					// Lights are in 'Double Flash' mode
+					if (elapsedTime >= nextInterval)
+					{
+						elapsedTime = elapsedTime % nextInterval;
 
-                            nextInterval = (flashCounter > 0) ? FlashOn : FlashOff;
-                        }
-                        break;
+						flashCounter = (flashCounter + 1) & 3;
 
-                    case NavLightState.Interval:
-                        // Lights are in 'Interval' mode
-                        if (elapsedTime >= Interval)
-                        {
-                            elapsedTime = elapsedTime % Interval;
+						nextInterval = (flashCounter > 0) ? FlashOn : FlashOff;
+					}
+					break;
 
-                            flashCounter = (flashCounter + 1) & 1;
-                        }
-                        break;
-                }
+				case NavLightState.Interval:
+					// Lights are in 'Interval' mode
+					if (elapsedTime >= Interval)
+					{
+						elapsedTime = elapsedTime % Interval;
 
-                // Or it with lightsOn in case we're in On mode.
-                lightsOn = ((flashCounter & 1) == 1);
+						flashCounter = (flashCounter + 1) & 1;
+					}
+					break;
+			}
+
+			// Or it with lightsOn in case we're in On mode.
+			lightsOn = ((flashCounter & 1) == 1);
 
 
-                Color newColor = new Color(Color.x, Color.y, Color.z);
-                if (lensMaterial.Length > 0)
-                {
-                    Color newEmissiveColor = (lightsOn) ? newColor : XKCDColors.Black;
-                    for (int i = 0; i < lensMaterial.Length; ++i)
-                    {
-                        lensMaterial[i].SetColor(colorProperty, newColor);
-                        lensMaterial[i].SetColor(emissiveColorProperty, newEmissiveColor);
-                    }
-                }
+			Color newColor = new Color(Color.x, Color.y, Color.z);
+			if (lensMaterial.Length > 0)
+			{
+				Color newEmissiveColor = (lightsOn) ? newColor : XKCDColors.Black;
+				for (int i = 0;i < lensMaterial.Length;++i)
+				{
+					lensMaterial[i].SetColor(colorProperty, newColor);
+					lensMaterial[i].SetColor(emissiveColorProperty, newEmissiveColor);
+				}
+			}
 
-                mainLight.intensity = (lightsOn) ? Intensity : 0.0f;
-                mainLight.range = Range;
-                mainLight.color = newColor;
+			mainLight.intensity = (lightsOn) ? Intensity : 0.0f;
+			mainLight.range = Range;
+			mainLight.color = newColor;
 
-                if (SpotAngle > 0.0f)
-                {
-                    mainLight.type = (spotLight) ? LightType.Spot : LightType.Point;
-                }
-            }
-        }
+			if (SpotAngle > 0.0f)
+			{
+				mainLight.type = (spotLight) ? LightType.Spot : LightType.Point;
+			}
+		}
 
         /// <summary>
         /// Provide the VAB module display name.
@@ -822,8 +839,8 @@ namespace AviationLights
                     ModuleNavLight ml = p.FindModuleImplementing<ModuleNavLight>();
                     if (ml != null) // shouldn't ever be null?
                     {
-                        ml.navLightSwitch = navLightSwitch;
-                        ml.toggleMode = toggleMode;
+                        ml.navLightSwitch = this.navLightSwitch;
+                        ml.toggleMode = this.toggleMode;
                         ml.UpdateMode();
                     }
                 }
@@ -870,10 +887,7 @@ namespace AviationLights
         //--- Part context menu events ---------------------------------------
 
         [KSPEvent(guiActive = true, guiActiveEditor = true, guiName = "#AL_ToggleSelectedMode")]
-        public void ToggleEvent()
-        {
-            this.ToggleCurrentMode();
-        }
+        public void ToggleEvent() => this.ToggleCurrentMode();
 
         //--- Public Interface -----------------------------------------------
 
@@ -881,30 +895,35 @@ namespace AviationLights
 
         public void SetLightOff()
         {
+            Log.dbg("SetLightOff for {0}", this.InstanceID);
             navLightSwitch = (int)NavLightState.Off;
             this.UpdateMe();
         }
 
         public void SetCurrentModeOn()
         {
+            Log.dbg("SetCurrentModeOn for {0}", this.InstanceID);
             navLightSwitch = toggleMode;
             this.UpdateMe();
         }
 
         public void ToggleCurrentMode()
         {
+            Log.dbg("ToggleCurrentMode for {0}", this.InstanceID);
             navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : toggleMode;
             this.UpdateMe();
         }
 
         public void SetLightOn()
         {
+            Log.dbg("SetLightOn for {0}", this.InstanceID);
             toggleMode = navLightSwitch = (int)NavLightState.On;
             this.UpdateMe();
         }
 
         public void ToggleLightOn()
         {
+            Log.dbg("ToggleLightOn for {0}", this.InstanceID);
             navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.On;
             toggleMode = (int)NavLightState.On;
             this.UpdateMe();
@@ -912,12 +931,14 @@ namespace AviationLights
 
         public void SetLightFlashOn()
         {
+            Log.dbg("SetLightFlashOn for {0}", this.InstanceID);
             toggleMode = navLightSwitch = (int)NavLightState.Flash;
             this.UpdateMe();
         }
 
         public void ToggleLightFlash()
         {
+            Log.dbg("ToggleLightFlash for {0}", this.InstanceID);
             navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.Flash;
             toggleMode = (int)NavLightState.Flash;
             this.UpdateMe();
@@ -925,12 +946,14 @@ namespace AviationLights
 
         public void SetLightDoubleFlashOn()
         {
+            Log.dbg("SetLightDoubleFlashOn for {0}", this.InstanceID);
             toggleMode = navLightSwitch = (int)NavLightState.DoubleFlash;
             this.UpdateMe();
         }
 
         public void ToggleLightDoubleFlash()
         {
+            Log.dbg("ToggleLightDoubleFlash for {0}", this.InstanceID);
             navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.DoubleFlash;
             toggleMode = (int)NavLightState.DoubleFlash;
             this.UpdateMe();
@@ -938,12 +961,14 @@ namespace AviationLights
 
         public void SetLightIntervalOn()
         {
+            Log.dbg("SetLightIntervalOn for {0}", this.InstanceID);
             toggleMode = navLightSwitch = (int)NavLightState.Interval;
             this.UpdateMe();
         }
 
         public void ToggleLightInterval()
         {
+            Log.dbg("ToggleLightInterval for {0}", this.InstanceID);
             navLightSwitch = this.IsLightTurnedOn ? (int)NavLightState.Off : (int)NavLightState.Interval;
             toggleMode = (int)NavLightState.Interval;
             this.UpdateMe();
@@ -954,5 +979,9 @@ namespace AviationLights
             UpdateMode();
             UpdateSymmetry();
         }
+
+		// This was borking on OnDestroy, so I decided to cache the information and save a NRE there.
+		private string _InstanceID = null;
+		public string InstanceID => this._InstanceID ?? (this._InstanceID = string.Format("{0}:{1}:{2:X}", this.vessel?.vesselName, this?.part?.name, this.part?.GetInstanceID()));
     }
 }
