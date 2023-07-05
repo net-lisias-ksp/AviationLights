@@ -832,7 +832,7 @@ namespace AviationLights
 
         //--- "Toggle" action group actions ----------------------------------
 
-        [KSPAction("#AL_ToggleFlash", KSPActionGroup.Light)]
+        [KSPAction("#AL_ToggleSelectedMode", KSPActionGroup.Light)]
         public void CurrentModeToggle(KSPActionParam param)
         {
             ToggleEvent();
@@ -863,6 +863,15 @@ namespace AviationLights
         }
 
         //--- "Set" action group actions -------------------------------------
+
+        [KSPAction("#AL_SetSelectedMode", KSPActionGroup.None)]
+        public void CurrentModeOnAction(KSPActionParam param)
+        {
+            navLightSwitch = toggleMode;
+
+            UpdateMode();
+            UpdateSymmetry();
+        }
 
         [KSPAction("#autoLOC_6001406", KSPActionGroup.None)]
         public void LightOnAction(KSPActionParam param)
