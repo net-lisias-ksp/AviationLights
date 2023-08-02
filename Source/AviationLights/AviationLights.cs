@@ -144,14 +144,22 @@ namespace AviationLights
         private delegate void UpdateDelegate();
         private UpdateDelegate CurrentUpdate;
 
-        /// <summary>
-        /// Initialize game object / light, set up mode status and flasher controls.
-        /// </summary>
-        public void Start()
-        {
-			if (HighLogic.LoadedSceneIsEditor)      this.CurrentUpdate = this.UpdateOnEditor;
-			else if (HighLogic.LoadedSceneIsFlight) this.CurrentUpdate = this.UpdateOnFlight;
-			else                                    this.CurrentUpdate = this.UpdateDummy;
+		private void OnEnable()
+		{
+			GameEvents.onGameSceneLoadRequested.Add(this.OnGameSceneLoadRequested);
+		}
+
+		private void OnDisable()
+		{
+			GameEvents.onGameSceneLoadRequested.Remove(this.OnGameSceneLoadRequested);
+		}
+
+		/// <summary>
+		/// Initialize game object / light, set up mode status and flasher controls.
+		/// </summary>
+		public void Start()
+		{
+			this.UpdateUpdate(HighLogic.LoadedScene);
 
 			{
 				BaseField field = Fields["Range"];
@@ -987,6 +995,18 @@ namespace AviationLights
             UpdateMode();
             UpdateSymmetry();
         }
+
+		private void UpdateUpdate(GameScenes scene)
+		{
+			switch (scene)
+			{
+				case GameScenes.EDITOR: this.CurrentUpdate = this.UpdateOnEditor; break;
+				case GameScenes.FLIGHT: this.CurrentUpdate = this.UpdateOnFlight; break;
+				default: this.CurrentUpdate = this.UpdateDummy; break;
+			}
+		}
+
+		private void OnGameSceneLoadRequested(GameScenes scene) => this.UpdateUpdate(scene);
 
 		// This was borking on OnDestroy, so I decided to cache the information and save a NRE there.
 		private string _InstanceID = null;
