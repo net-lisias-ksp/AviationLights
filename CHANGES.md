@@ -1,5 +1,9 @@
 # Aviation Lights /L :: Changes
 
+* 2023-0801: 4.2.1.1 (LisiasT) for KSP >= 1.3.0
+	+ Desperate attempt to mitigate an issue (that I don't even now if it's really an issue) where AL could be inducing (or being induced) to screw up a Scene transitioning reported by [exospaceman](https://forum.kerbalspaceprogram.com/profile/224165-exospaceman/) on [Forum](https://forum.kerbalspaceprogram.com/topic/218634-need-a-help-on-a-ksp-bug-i-am-dealing-with/#comment-4306227).
+	+ Related issues:
+		- [#4](https://github.com/net-lisias-ksp/AviationLights/issues/4) Aviation Lights *may* be involved on a weird bug report on Forum
 * 2023-0705: 4.2.1.0 (LisiasT) for KSP >= 1.3.0
 	+ New Action to turn on whatever is the current mode at the moment
 		- The Toggle Action was correctly labeled (and localized)
