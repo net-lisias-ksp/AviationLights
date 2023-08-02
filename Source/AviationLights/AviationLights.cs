@@ -561,6 +561,10 @@ namespace AviationLights
 		private void UpdateDummy() { }
 		private void UpdateOnFlight()
 		{
+#if DEBUG
+			if(!HighLogic.LoadedSceneIsFlight)
+				Log.error("I'm LoadedSceneIsFlight but the current scene is {0}", HighLogic.LoadedScene);
+#endif
 			if (navLightSwitch != (int)NavLightState.Off && actualEnergyReq > 0.0f && TimeWarp.deltaTime > 0.0f)
 			{
 				if (vessel.RequestResource(part, resourceId, actualEnergyReq * TimeWarp.deltaTime, true) < actualEnergyReq * TimeWarp.deltaTime * 0.5f)
@@ -629,6 +633,10 @@ namespace AviationLights
 		}
 		private void UpdateOnEditor()
 		{
+#if DEBUG
+			if(!HighLogic.LoadedSceneIsEditor)
+				Log.error("I'm UpdateOnEditor but the current scene is {0}", HighLogic.LoadedScene);
+#endif
 			// Account for any tweakable tweaks.
 			Color.x = lightR;
 			Color.y = lightG;
