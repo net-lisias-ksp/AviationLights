@@ -1,5 +1,7 @@
 # Aviation Lights /L :: Change Log
 
+* 2026-0322: 4.2.1.2 (LisiasT) for KSP >= 1.3.0
+	+ Updates `KSPe.Light` to 2.5.5.2, fixing a lame mistake that prevented it from working on KSP < 1.8.0 🤦
 * 2023-0801: 4.2.1.1 (LisiasT) for KSP >= 1.3.0
 	+ Desperate attempt to mitigate an issue (that I don't even now if it's really an issue) where AL could be inducing (or being induced) to screw up a Scene transitioning reported by [exospaceman](https://forum.kerbalspaceprogram.com/profile/224165-exospaceman/) on [Forum](https://forum.kerbalspaceprogram.com/topic/218634-need-a-help-on-a-ksp-bug-i-am-dealing-with/#comment-4306227).
 	+ Related issues:
