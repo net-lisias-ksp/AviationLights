@@ -1,6 +1,6 @@
 ﻿/*
 	This file is part of Aviation Lights /L
-		© 2021-2023 LisiasT : http://lisias.net <support@lisias.net>
+		© 2021-2026 LisiasT : http://lisias.net <support@lisias.net>
 		© 2018-2023 MOARdv
 		© 2012-2018 BigNose
 		© 2012 RPGprayer
